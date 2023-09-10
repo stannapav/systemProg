@@ -18,16 +18,24 @@ int main()
 	GetVersionEx(&computerVersion);
 	int keyboardType = GetKeyboardType(0);
 
-	if (keyboardType == 4) 
+	switch (keyboardType)
+	{
+	case 4:
 		wsprintf(keyboardTypeStr, "Enhanced 101- or 102-key keyboards (and compatibles)");
-	else if (keyboardType == 7) 
+		break;
+	case 7:
 		wsprintf(keyboardTypeStr, "Japanese Keyboard");
-	else if (keyboardType == 7)
+		break;
+	case 8:
 		wsprintf(keyboardTypeStr, "Korean Keyboard");
-	else if (keyboardType == 7)
+		break;
+	case 51:
 		wsprintf(keyboardTypeStr, "Unknown type or HID keyboard");
-	else
+		break;
+	default:
 		wsprintf(keyboardTypeStr, "Unknown");
+		break;
+	}
 
 	if(computerVersion.dwMajorVersion == 10)
 		wsprintf(computerVersionStr, "Windows 10");
@@ -42,7 +50,7 @@ int main()
 	else
 		wsprintf(computerVersionStr, "Unknown Windows");
 
-	wsprintf(str, "Info about this PC\nPC name: %s\nUser name: %s\nWindows version: %s\nSystem directory: %s\nWindows directory: %s\nKeyboard type: %s\n"
+	wsprintf(str, "Info about this PC\nPC name: %s\nUser name: %s\nWindows version: %s\nSystem directory: %s\nWindows directory: %s\nKeyboard type: %s\n\n"
 		, computerName, userName, computerVersionStr, systemDirectory, windowsDirectory, keyboardTypeStr);
 	WriteConsole(hOut, str, strlen(str), &write, NULL);
 }
