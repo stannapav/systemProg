@@ -20,10 +20,10 @@ int main()
 	bool loop = true;
 	do
 	{
-		wsprintf(str, "What system metric you want to know?\n1: SM_CMONITORS\n2: SM_CMOUSEBUTTONS\n3: SM_CXCURSOR\n4: SM_CXFULLSCREENn0: End\nInput: ");
+		wsprintf(str, "What system metric you want to know?\n1: SM_CMONITORS\n2: SM_CMOUSEBUTTONS\n3: SM_CXCURSOR\n4: SM_CXFULLSCREEN\nn0: End\nInput: ");
 		WriteConsole(hOut, &str, strlen(str), &write, NULL);
 		ReadConsole(hIn, &inputBuffer, strlen(inputBuffer), &read, NULL);
-
+		system("cls");
 		int out;
 		switch (inputBuffer[0])
 		{
@@ -102,7 +102,7 @@ int main()
 		break;
 	}
 
-	wsprintf(str, "System info\nProcessor ArArchitecture: %s\nProcessor Type: %s\nNumber of processors: %i\n", procArchitecture, processorType, numberOfProcessors);
+	wsprintf(str, "System info:\nProcessor ArArchitecture: %s\nProcessor Type: %s\nNumber of processors: %i\n", procArchitecture, processorType, numberOfProcessors);
 	WriteConsole(hOut, str, strlen(str), &write, NULL);
 
 	return 0;
