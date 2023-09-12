@@ -32,22 +32,22 @@ int main()
 			break;
 		case '1':
 			out = GetSystemMetrics(SM_CMONITORS);
-			wsprintf(str, "System metrics: %i\n", out);
+			wsprintf(str, "Monitor count: %i\n", out);
 			WriteConsole(hOut, str, strlen(str), &write, NULL);
 			break;
 		case '2':
 			out = GetSystemMetrics(SM_CMOUSEBUTTONS);
-			wsprintf(str, "System metrics: %i\n", out);
+			wsprintf(str, "Mouse button count: %i\n", out);
 			WriteConsole(hOut, str, strlen(str), &write, NULL);
 			break;
 		case '3':
 			out = GetSystemMetrics(SM_CXCURSOR);
-			wsprintf(str, "System metrics: %i\n", out);
+			wsprintf(str, "Nominal width of a cursor, in pixels: %i\n", out);
 			WriteConsole(hOut, str, strlen(str), &write, NULL);
 			break;
 		case '4':
 			out = GetSystemMetrics(SM_CXFULLSCREEN);
-			wsprintf(str, "System metrics: %i\n", out);
+			wsprintf(str, "Width of the full-screen window on display monitor, in pixels: %i\n", out);
 			WriteConsole(hOut, str, strlen(str), &write, NULL);
 			break;
 		default:

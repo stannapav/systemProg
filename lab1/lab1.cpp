@@ -5,7 +5,7 @@ using namespace std;
 int main() 
 {
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	DWORD write, nSize = 20;
+	DWORD write, nSize = 20, sizeUser = 20;
 	char computerName[20], userName[20], keyboardTypeStr[60], systemDirectory[MAX_PATH], windowsDirectory[MAX_PATH], computerVersionStr[20];
 	char str[300];
 	OSVERSIONINFO computerVersion;
@@ -14,7 +14,7 @@ int main()
 	GetSystemDirectory(systemDirectory, MAX_PATH);
 	GetWindowsDirectory(windowsDirectory, MAX_PATH);
 	GetComputerName(computerName, &nSize);
-	GetUserName(userName, &nSize);
+	GetUserName(userName, &sizeUser);
 	GetVersionEx(&computerVersion);
 	int keyboardType = GetKeyboardType(0);
 
