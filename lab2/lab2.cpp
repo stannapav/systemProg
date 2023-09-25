@@ -11,7 +11,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-char str[100] = "";
+WCHAR str[100];
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -116,17 +116,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONDOWN:
         pt.x = LOWORD(lParam);
         pt.y = HIWORD(lParam);
-        wsprintf(str, "Coordinates are: X=%i and Y=%i", pt.x, pt.y);
+        wsprintf(str, L"Coordinates are: X=%i and Y=%i", pt.x, pt.y);
         InvalidateRect(hWnd, NULL, TRUE);
         break;
 
     case WM_RBUTTONDOWN:
-        MessageBox(hWnd, "Right mouse button pressed.", "Button pressed", MB_OK | MB_ICONINFORMATION | MB_DEFBUTTON1);
+        MessageBox(hWnd, L"Right mouse button pressed.", L"Button pressed", MB_OK | MB_ICONINFORMATION | MB_DEFBUTTON1);
         break;
     
     case WM_PAINT:
         hDC = BeginPaint(hWnd, &Ps);
-        TextOut(hDC, 20, 20, str, strlen(str));
+        TextOut(hDC, 20, 20, str, wcslen(str));
         EndPaint(hWnd, &Ps);
         break;;
 
