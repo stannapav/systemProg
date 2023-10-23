@@ -20,10 +20,10 @@ int main()
 	bool loop = true;
 	do
 	{
-		wsprintf(str, "What system metric you want to know?\n1: SM_CMONITORS\n2: SM_CMOUSEBUTTONS\n3: SM_CXCURSOR\n4: SM_CXFULLSCREENn0: End\nInput: ");
+		wsprintf(str, "What system metric you want to know?\n1: SM_CMONITORS\n2: SM_CMOUSEBUTTONS\n3: SM_CXCURSOR\n4: SM_CXFULLSCREEN\nn0: End\nInput: ");
 		WriteConsole(hOut, &str, strlen(str), &write, NULL);
 		ReadConsole(hIn, &inputBuffer, strlen(inputBuffer), &read, NULL);
-
+		system("cls");
 		int out;
 		switch (inputBuffer[0])
 		{
@@ -32,22 +32,22 @@ int main()
 			break;
 		case '1':
 			out = GetSystemMetrics(SM_CMONITORS);
-			wsprintf(str, "System metrics: %i\n", out);
+			wsprintf(str, "Monitor count: %i\n", out);
 			WriteConsole(hOut, str, strlen(str), &write, NULL);
 			break;
 		case '2':
 			out = GetSystemMetrics(SM_CMOUSEBUTTONS);
-			wsprintf(str, "System metrics: %i\n", out);
+			wsprintf(str, "Mouse button count: %i\n", out);
 			WriteConsole(hOut, str, strlen(str), &write, NULL);
 			break;
 		case '3':
 			out = GetSystemMetrics(SM_CXCURSOR);
-			wsprintf(str, "System metrics: %i\n", out);
+			wsprintf(str, "Nominal width of a cursor, in pixels: %i\n", out);
 			WriteConsole(hOut, str, strlen(str), &write, NULL);
 			break;
 		case '4':
 			out = GetSystemMetrics(SM_CXFULLSCREEN);
-			wsprintf(str, "System metrics: %i\n", out);
+			wsprintf(str, "Width of the full-screen window on display monitor, in pixels: %i\n", out);
 			WriteConsole(hOut, str, strlen(str), &write, NULL);
 			break;
 		default:
@@ -102,7 +102,7 @@ int main()
 		break;
 	}
 
-	wsprintf(str, "System info\nProcessor ArArchitecture: %s\nProcessor Type: %s\nNumber of processors: %i\n", procArchitecture, processorType, numberOfProcessors);
+	wsprintf(str, "System info:\nProcessor ArArchitecture: %s\nProcessor Type: %s\nNumber of processors: %i\n", procArchitecture, processorType, numberOfProcessors);
 	WriteConsole(hOut, str, strlen(str), &write, NULL);
 
 	return 0;
